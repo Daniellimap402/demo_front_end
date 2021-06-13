@@ -1,3 +1,4 @@
+import { LoginComponent } from './component/login/login.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
@@ -20,7 +21,11 @@ export const Approutes: Routes = [
     ]
   },
   {
-    path: '**',
-    redirectTo: '/dashboard'
+    path: 'entrar',
+    component: LoginComponent
+  },
+  {
+    path: 'registrar-se',
+    component: LoginComponent
   }
 ];
