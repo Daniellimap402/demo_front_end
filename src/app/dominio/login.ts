@@ -1,4 +1,4 @@
 export class Login{
-    emailCpfCnpj: string;
+    emailDocumento: string;
     senha: string;
 }

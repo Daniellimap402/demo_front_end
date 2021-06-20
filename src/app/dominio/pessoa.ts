@@ -3,6 +3,6 @@ export class Pessoa{
     nome: string;
     senha: string;
     email: string;
-    cpfCnpj: string;
+    documento: string;
     numTelefone: string;
 }

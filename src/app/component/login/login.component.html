@@ -9,7 +9,7 @@
         </div>
         <div>
             <form [hidden]="ehRegistro()" [formGroup]="formLogin">
-                <input type="text" id="login" class="fadeIn third" formControlName="emailCpfCnpj" [(ngModel)]="login.emailCpfCnpj" placeholder="E-mail, CPF ou CNPJ">
+                <input type="text" id="login" class="fadeIn third" formControlName="emailDocumento" [(ngModel)]="login.emailDocumento" placeholder="E-mail, CPF ou CNPJ">
                 <input type="password" id="senha" class="fadeIn third" formControlName="senha" [(ngModel)]="login.senha" placeholder="Senha">
                 <input type="submit" class="fadeIn fourth" value="Entrar" (click)="doLogin()">
             </form>
@@ -18,7 +18,8 @@
             <form [formGroup]="form">
                 <input type="text" class="fadeIn third" formControlName="nome" [(ngModel)]="pessoa.nome" placeholder="Nome">
                 <input type="text" class="fadeIn third" formControlName="email" [(ngModel)]="pessoa.email" placeholder="E-mail">
-                <input type="text" class="fadeIn third" formControlName="cpfCnpj" [(ngModel)]="pessoa.cpfCnpj" placeholder="CPF ou CNPJ">
+                <input type="text" class="fadeIn third" formControlName="documento" [(ngModel)]="pessoa.documento" placeholder="CPF ou CNPJ">
+                <input type="text" class="fadeIn third" formControlName="numTelefone" [(ngModel)]="pessoa.numTelefone" placeholder="Número do telefone">
                 <input type="password" class="fadeIn third" formControlName="senha" [(ngModel)]="pessoa.senha" placeholder="Senha">
                 <input type="password" class="fadeIn third" placeholder="Confirmar senha">
                 <input type="submit" class="fadeIn fourth" value="Registrar-se" (click)="registrar()">

@@ -1,36 +1,32 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Pessoa } from 'src/app/dominio/pessoa';
-
+import { Pessoa } from './../../dominio/pessoa';
 @Injectable({
   providedIn: 'root'
 })
-export class PessoaService {
+export class AutenticacaoService {
 
-  rota = 'http://localhost:8080/api/pessoas/'
+  ROTA = 'http://localhost:8080/api/auth/';
+  httpOptions = {
+    headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+  };
 
   constructor(private http: HttpClient) { }
 
-  public login(username: string, password: string): Observable<object>{
-    const headers = new HttpHeaders({Authorization: 'Basic '+ btoa(`${username}:${password}`)}); 
-    return this.http.get(this.rota,{headers, responseType: 'text' as 'json'});
+  login(credentials: { emailDocumento: string, senha: string }): Observable<any> {
+    return this.http.post(this.ROTA + 'entrar', {
+      username: credentials.emailDocumento,
+      password: credentials.senha
+    }, this.httpOptions);
   }
 
-  public listar(): Observable<object>{
-    const username = 'TESTE';
-    const password = 'TESTE';
-    const headers = new HttpHeaders({Authorization: 'Basic '+ btoa(`${username}:${password}`)}); 
-    return this.http.get(this.rota+'listar', {headers});
+  register(user: Pessoa): Observable<any> {
+    return this.http.post(this.ROTA + 'registrar', user, this.httpOptions);
   }
 
-  public cadastrar(pessoa: Pessoa): Observable<Object>{
-    console.log('entrou');
-    
-    const username = 'TESTE';
-    const password = 'TESTE';
-    const headers = new HttpHeaders({Authorization: 'Basic '+ btoa(`${username}:${password}`)}); 
-    return this.http.post(this.rota, pessoa, {headers});
+  testeAutenticacao() {
+    return this.http.get('http://localhost:8080/api/pessoas/listar');
   }
 
 }
