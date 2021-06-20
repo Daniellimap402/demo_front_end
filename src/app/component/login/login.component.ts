@@ -15,7 +15,6 @@ export class LoginComponent implements OnInit {
 
   pessoa: Pessoa = new Pessoa();
   login: Login = new Login();
-  confirmacaoSenha: string;
   form: FormGroup;
   formLogin: FormGroup;
 
@@ -23,7 +22,7 @@ export class LoginComponent implements OnInit {
     private router: Router,
     private fb: FormBuilder,
     private tokenStorage: TokenStorageService,
-    private AutenticacaoService: AutenticacaoService
+    private autenticacaoService: AutenticacaoService
   ) { }
 
   ngOnInit(): void {
@@ -31,15 +30,13 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit() {
-    this.AutenticacaoService.login(this.login).subscribe(
+    this.autenticacaoService.login(this.login).subscribe(
       data => {
         this.tokenStorage.saveToken(data.token);
-        this.tokenStorage.saveUser(data);      
-                 
-        this.listar();
+        this.tokenStorage.saveUser(data);
       },
       err => {
-        console.log('erro',err);    
+        console.log('erro', err);
       }
     );
   }
@@ -60,6 +57,7 @@ export class LoginComponent implements OnInit {
       documento: ['', Validators.required],
       numTelefone: ['', Validators.required],
       senha: ['', Validators.required],
+      confirmacao: ['', Validators.required]
     });
   }
 
@@ -76,12 +74,17 @@ export class LoginComponent implements OnInit {
   }
 
   registrar() {
-    if (this.form.valid)
-      this.AutenticacaoService.register(this.pessoa).subscribe();
+    if (this.form.valid && this.confirmacaoSenha()) {
+      this.autenticacaoService.register(this.pessoa).subscribe();
+    }
   }
 
-  listar(){
-    this.AutenticacaoService.testeAutenticacao().subscribe();
+  confirmacaoSenha(): Boolean {
+    const confirmacao = this.form.get('confirmacao');
+    if (confirmacao?.dirty || confirmacao?.touched){
+      return Object.is(confirmacao.value, this.pessoa.senha);
+    }    
+    return true;
   }
 
 }

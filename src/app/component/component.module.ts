@@ -21,6 +21,7 @@ import { NgbdtabsBasicComponent } from './tabs/tabs.component';
 import { NgbdtimepickerBasicComponent } from './timepicker/timepicker.component';
 import { ToastsContainer } from './toast/toast-container';
 import { ToastComponent } from './toast/toast.component';
+import { ConfirmacaoComponent } from './confirmacao/confirmacao.component';
 
 
 
@@ -49,7 +50,8 @@ import { ToastComponent } from './toast/toast.component';
     CardsComponent,
     ToastComponent,
     ToastsContainer,
-    LoginComponent
+    LoginComponent,
+    ConfirmacaoComponent
   ],
 })
 export class ComponentsModule {}

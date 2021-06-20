@@ -25,8 +25,4 @@ export class AutenticacaoService {
     return this.http.post(this.ROTA + 'registrar', user, this.httpOptions);
   }
 
-  testeAutenticacao() {
-    return this.http.get('http://localhost:8080/api/pessoas/listar');
-  }
-
 }

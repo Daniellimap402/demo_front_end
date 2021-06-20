@@ -1,8 +1,8 @@
+import { Routes } from '@angular/router';
+import { ConfirmacaoComponent } from './component/confirmacao/confirmacao.component';
 import { LoginComponent } from './component/login/login.component';
-import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
-
 import { FullComponent } from './layouts/full/full.component';
+
 
 export const Approutes: Routes = [
   {
@@ -27,5 +27,13 @@ export const Approutes: Routes = [
   {
     path: 'registrar-se',
     component: LoginComponent
+  },
+  {
+    path: 'confirmar/:token',
+    component: ConfirmacaoComponent
+  },
+  {
+    path: '**',
+    redirectTo: ''
   }
 ];
