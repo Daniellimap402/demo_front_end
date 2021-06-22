@@ -76,8 +76,8 @@ export class LoginComponent implements OnInit {
 
   registrar() {
     if (this.form.valid && this.confirmacaoSenha()) {
-      this.autenticacaoService.register(this.pessoa).subscribe(err => {
-        this.toastService.show(err.error.message, { classname: 'bg-danger text-light', delay: 0 });
+      this.autenticacaoService.register(this.pessoa).subscribe(null, err => {
+        this.toastService.show(err.error.errors, { classname: 'bg-danger text-light', delay: 0 });        
       });
     }
   }
