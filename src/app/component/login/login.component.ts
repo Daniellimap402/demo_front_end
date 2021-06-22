@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { TokenStorageService } from '../../shared/services/token-storage.service';
+import { ToastService } from '../toast/toast.service';
 import { Login } from './../../dominio/login';
 import { Pessoa } from './../../dominio/pessoa';
 import { AutenticacaoService } from './../../shared/services/autenticacao.service';
@@ -22,7 +23,8 @@ export class LoginComponent implements OnInit {
     private router: Router,
     private fb: FormBuilder,
     private tokenStorage: TokenStorageService,
-    private autenticacaoService: AutenticacaoService
+    private autenticacaoService: AutenticacaoService,
+    private toastService: ToastService
   ) { }
 
   ngOnInit(): void {
@@ -34,9 +36,10 @@ export class LoginComponent implements OnInit {
       data => {
         this.tokenStorage.saveToken(data.token);
         this.tokenStorage.saveUser(data);
+        this.voltarHome();
       },
-      err => {
-        console.log('erro', err);
+      err => {        
+        this.toastService.show(err.error.message, { classname: 'bg-danger text-light', delay: 0 });
       }
     );
   }
@@ -53,9 +56,7 @@ export class LoginComponent implements OnInit {
     });
     this.form = this.fb.group({
       nome: ['', Validators.required],
-      email: ['', Validators.required],
-      documento: ['', Validators.required],
-      numTelefone: ['', Validators.required],
+      email: ['', [Validators.email, Validators.required]],
       senha: ['', Validators.required],
       confirmacao: ['', Validators.required]
     });
@@ -75,7 +76,9 @@ export class LoginComponent implements OnInit {
 
   registrar() {
     if (this.form.valid && this.confirmacaoSenha()) {
-      this.autenticacaoService.register(this.pessoa).subscribe();
+      this.autenticacaoService.register(this.pessoa).subscribe(err => {
+        this.toastService.show(err.error.message, { classname: 'bg-danger text-light', delay: 0 });
+      });
     }
   }
 
@@ -85,6 +88,10 @@ export class LoginComponent implements OnInit {
       return Object.is(confirmacao.value, this.pessoa.senha);
     }    
     return true;
+  }
+
+  recuperarSenha() {
+    this.router.navigate(['/recuperar']);
   }
 
 }

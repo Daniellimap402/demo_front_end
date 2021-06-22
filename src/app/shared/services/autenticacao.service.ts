@@ -14,9 +14,9 @@ export class AutenticacaoService {
 
   constructor(private http: HttpClient) { }
 
-  login(credentials: { emailDocumento: string, senha: string }): Observable<any> {
+  login(credentials: { email: string, senha: string }): Observable<any> {
     return this.http.post(this.ROTA + 'entrar', {
-      username: credentials.emailDocumento,
+      username: credentials.email,
       password: credentials.senha
     }, this.httpOptions);
   }

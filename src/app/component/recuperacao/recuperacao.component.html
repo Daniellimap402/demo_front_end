@@ -1,0 +1,16 @@
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+<div class="wrapper fadeInDown height-maximo">
+    <div id="formContent">
+        <div class="fadeIn first p-3">
+            <a class="underlineHover">DEMO</a>
+        </div>
+        <div>
+            <input type="text" id="email" class="fadeIn third" [(ngModel)]="login.email"
+                placeholder="Digite o seu e-mail">
+            <input type="submit" class="fadeIn fourth" value="Enviar" (click)="recuperarSenha()">
+        </div>
+    </div>
+</div>

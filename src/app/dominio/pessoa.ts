@@ -3,6 +3,4 @@ export class Pessoa{
     nome: string;
     senha: string;
     email: string;
-    documento: string;
-    numTelefone: string;
 }

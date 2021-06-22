@@ -1,6 +1,7 @@
 import { Routes } from '@angular/router';
 import { ConfirmacaoComponent } from './component/confirmacao/confirmacao.component';
 import { LoginComponent } from './component/login/login.component';
+import { RecuperacaoComponent } from './component/recuperacao/recuperacao.component';
 import { FullComponent } from './layouts/full/full.component';
 
 
@@ -29,8 +30,16 @@ export const Approutes: Routes = [
     component: LoginComponent
   },
   {
-    path: 'confirmar/:token',
+    path: 'confirmar/:email',
     component: ConfirmacaoComponent
+  },
+  {
+    path: 'recuperar',
+    component: RecuperacaoComponent
+  },
+  {
+    path: 'recuperar/:id/:senha',
+    component: RecuperacaoComponent
   },
   {
     path: '**',

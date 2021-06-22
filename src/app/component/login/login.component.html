@@ -5,12 +5,12 @@
 <div class="wrapper fadeInDown height-maximo">
     <div id="formContent">
         <div class="fadeIn first p-3">
-            <a class="underlineHover">Online Store Sales</a>
+            <a class="underlineHover">DEMO</a>
         </div>
         <div>
             <form [hidden]="ehRegistro()" [formGroup]="formLogin">
                 <input type="text" id="login" class="fadeIn third" formControlName="emailDocumento"
-                    [(ngModel)]="login.emailDocumento" placeholder="E-mail, CPF ou CNPJ">
+                    [(ngModel)]="login.email" placeholder="E-mail">
                 <input type="password" id="senha" class="fadeIn third" formControlName="senha" [(ngModel)]="login.senha"
                     placeholder="Senha">
                 <input type="submit" class="fadeIn fourth" value="Entrar" (click)="doLogin()">
@@ -22,10 +22,6 @@
                     placeholder="Nome">
                 <input type="text" class="fadeIn third" formControlName="email" [(ngModel)]="pessoa.email"
                     placeholder="E-mail">
-                <input type="text" class="fadeIn third" formControlName="documento" [(ngModel)]="pessoa.documento"
-                    placeholder="CPF ou CNPJ">
-                <input type="text" class="fadeIn third" formControlName="numTelefone" [(ngModel)]="pessoa.numTelefone"
-                    placeholder="Número do telefone">
                 <input type="password" class="fadeIn third" formControlName="senha" [(ngModel)]="pessoa.senha"
                     placeholder="Senha">
                 <input type="password" class="fadeIn third" placeholder="Confirmar senha" formControlName="confirmacao">
@@ -37,7 +33,8 @@
         </div>
         <input type="button" class="fadeIn fourth botao-voltar" value="Voltar" (click)="voltarHome()">
         <div id="formFooter" [hidden]="ehRegistro()">
-            <a class="underlineHover" href="#">Esqueceu a senha?</a>
+            <a class="underlineHover" (click)="recuperarSenha()">Esqueceu a senha?</a>
         </div>
+        <app-toasts aria-live="polite" aria-atomic="true"></app-toasts>
     </div>
 </div>

@@ -1,6 +1,6 @@
-import { Component, TemplateRef } from '@angular/core';
-
+import { Component } from '@angular/core';
 import { ToastService } from './toast.service';
+
 
 
 @Component({
@@ -26,7 +26,6 @@ export class ToastsContainer {
   constructor(public toastService: ToastService) {}
 
   isTemplate(toast:{title:string}) { 
-    debugger;
     return toast.title;
    }
 }

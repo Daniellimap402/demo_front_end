@@ -11,13 +11,18 @@ export class ConfirmacaoComponent implements OnInit {
     private route: ActivatedRoute,
     private pessoaService: PessoaService,
     private router: Router
-    ) { }
+  ) { }
 
   ngOnInit(): void {
+    this.confirmarEmail();
+  }
+
+
+  private confirmarEmail() {
     this.route.params.subscribe((params: Params) => {
-      const token = params.token;
-      this.pessoaService.confirmar(token).subscribe(() => this.router.navigateByUrl('dashboard'));
-  });
+      const email = params.email;
+      this.pessoaService.confirmar(email).subscribe(() => this.router.navigateByUrl('dashboard'));
+    });
   }
 
 }

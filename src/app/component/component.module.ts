@@ -9,6 +9,7 @@ import { ButtonsComponent } from './buttons/buttons.component';
 import { CardsComponent } from './card/card.component';
 import { NgbdCarouselBasicComponent } from './carousel/carousel.component';
 import { ComponentsRoutes } from './component.routing';
+import { ConfirmacaoComponent } from './confirmacao/confirmacao.component';
 import { NgbdDatepickerBasicComponent } from './datepicker/datepicker.component';
 import { NgbdDropdownBasicComponent } from './dropdown-collapse/dropdown-collapse.component';
 import { LoginComponent } from './login/login.component';
@@ -17,11 +18,11 @@ import { NgbdpaginationBasicComponent } from './pagination/pagination.component'
 import { NgbdPopTooltipComponent } from './popover-tooltip/popover-tooltip.component';
 import { NgbdpregressbarBasicComponent } from './progressbar/progressbar.component';
 import { NgbdratingBasicComponent } from './rating/rating.component';
+import { RecuperacaoComponent } from './recuperacao/recuperacao.component';
 import { NgbdtabsBasicComponent } from './tabs/tabs.component';
 import { NgbdtimepickerBasicComponent } from './timepicker/timepicker.component';
 import { ToastsContainer } from './toast/toast-container';
 import { ToastComponent } from './toast/toast.component';
-import { ConfirmacaoComponent } from './confirmacao/confirmacao.component';
 
 
 
@@ -51,7 +52,8 @@ import { ConfirmacaoComponent } from './confirmacao/confirmacao.component';
     ToastComponent,
     ToastsContainer,
     LoginComponent,
-    ConfirmacaoComponent
+    ConfirmacaoComponent,
+    RecuperacaoComponent
   ],
 })
 export class ComponentsModule {}
