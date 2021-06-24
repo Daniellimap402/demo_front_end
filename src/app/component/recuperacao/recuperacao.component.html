@@ -7,10 +7,22 @@
         <div class="fadeIn first p-3">
             <a class="underlineHover">DEMO</a>
         </div>
-        <div>
+        <div *ngIf="!ehAlteracao()">
             <input type="text" id="email" class="fadeIn third" [(ngModel)]="login.email"
                 placeholder="Digite o seu e-mail">
             <input type="submit" class="fadeIn fourth" value="Enviar" (click)="recuperarSenha()">
         </div>
+
+        <form [formGroup]="formLogin">
+            <div *ngIf="ehAlteracao()">
+                <input type="text" id="email" class="fadeIn third" [(ngModel)]="login.senha" formControlName="senha"
+                    placeholder="Digite o código passado a você">
+                <input type="text" id="email" class="fadeIn third" [(ngModel)]="novasCredencias.senha"
+                    formControlName="novaSenha" placeholder="Digite a sua nova senha">
+                <input type="text" id="email" class="fadeIn third" placeholder="Confirma a senha"
+                    formControlName="confirmacaoSenha">
+                <input type="submit" class="fadeIn fourth" value="Enviar" (click)="alterarSenha()">
+            </div>
+        </form>
     </div>
 </div>

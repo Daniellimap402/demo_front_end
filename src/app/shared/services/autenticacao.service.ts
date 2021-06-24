@@ -1,6 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { Login } from 'src/app/dominio/login';
 import { Pessoa } from './../../dominio/pessoa';
 @Injectable({
   providedIn: 'root'
@@ -14,7 +15,7 @@ export class AutenticacaoService {
 
   constructor(private http: HttpClient) { }
 
-  login(credentials: { email: string, senha: string }): Observable<any> {
+  login(credentials: Login): Observable<any> {
     return this.http.post(this.ROTA + 'entrar', {
       username: credentials.email,
       password: credentials.senha

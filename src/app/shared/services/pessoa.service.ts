@@ -1,6 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { Login } from 'src/app/dominio/login';
 
 @Injectable({
     providedIn: 'root'
@@ -22,7 +23,10 @@ export class PessoaService {
         return this.http.patch(this.ROTA + 'recuperar/' + email, this.httpOptions);
     }
 
-    alterarSenha(id: Number, novaSenha: String): Observable<any> {
-        return this.http.patch(this.ROTA + 'alterar-senha',{id: id, senha: novaSenha}, this.httpOptions);
+    alterarSenha(novasCredenciais: Login): Observable<any> {
+        return this.http.patch(this.ROTA + 'alterar-senha',{
+            username: novasCredenciais.email,
+            password: novasCredenciais.senha
+          }, this.httpOptions);
     }
 }

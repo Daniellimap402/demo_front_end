@@ -38,7 +38,7 @@ export const Approutes: Routes = [
     component: RecuperacaoComponent
   },
   {
-    path: 'recuperar/:id/:senha',
+    path: 'recuperar/:email',
     component: RecuperacaoComponent
   },
   {
